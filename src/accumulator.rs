@@ -642,6 +642,21 @@ mod tests {
 
                 assert!(extended_gcd(&x, &y).0.is_one(), "x, y must be coprime");
 
+                // regular add for more general x and y sets.
+                let xs = (0..5)
+                    .map(|_| rng.gen_prime(128))
+                    .collect::<Vec<_>>();
+                for x in &xs {
+                    acc.add(x);
+                }
+                let ys = (0..10)
+                    .map(|_| rng.gen_prime(128))
+                    .collect::<Vec<_>>();
+                for y in &ys {
+                    other.add(y);
+                }
+
+
                 acc.add(&x);
                 other.add(&y);
 
